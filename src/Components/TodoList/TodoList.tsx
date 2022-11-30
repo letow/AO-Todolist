@@ -5,6 +5,7 @@ import TodoItem from "./TodoItem/TodoItem";
 import s from "./TodoList.module.scss";
 import Popup from "./Popup/Popup";
 import { useEffect } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default observer(function TodoList() {
   useEffect(() => {
@@ -34,6 +35,9 @@ export default observer(function TodoList() {
           ))
         ) : (
           <div className={s.placeholder}>Todo List is empty. Add a task!</div>
+          // <div className={s.loader}>
+          //   <CircularProgress />
+          // </div>
         )}
       </div>
     </div>

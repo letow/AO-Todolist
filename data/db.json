@@ -8,12 +8,12 @@
     {
       "id": 2,
       "text": "asdfghj",
-      "done": false
+      "done": true
     },
     {
       "id": 3,
       "text": "joj",
-      "done": false
+      "done": true
     },
     {
       "id": 4,

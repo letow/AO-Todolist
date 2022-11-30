@@ -1,9 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import { addItem, getItems, removeItem } from "../API/ServerAPI";
+import { addItem, doneItem, getAllItems, removeItem } from "../API/ServerAPI";
 import { Todo } from "../Types/Todo";
 
 class ToDoList {
   todos: Todo[] = [];
+  fetching: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -14,13 +15,19 @@ class ToDoList {
     addItem(todo);
   }
 
-  removeTodo(todo: Todo) {
-    this.todos = this.todos.filter((obj) => obj.id !== todo.id);
-    removeItem(todo.id);
+  removeTodo(todoId: number) {
+    this.todos = this.todos.filter((obj) => obj.id !== todoId);
+    removeItem(todoId);
+  }
+
+  doneTodo(todo: Todo) {
+    const itemIndex = this.todos.findIndex((obj) => obj.id === todo.id);
+    this.todos[itemIndex].done = !this.todos[itemIndex].done;
+    doneItem(this.todos[itemIndex]);
   }
 
   async getTodos() {
-    this.todos = await getItems();
+    this.todos = await getAllItems();
   }
 }
 

@@ -2,7 +2,7 @@ import { Todo } from "../Types/Todo";
 
 const url = "http://localhost:8000/todos";
 
-export const getItems = async () => {
+export const getAllItems = async () => {
   return await fetch(url).then((response) => response.json());
 };
 
@@ -14,8 +14,18 @@ export const addItem = async (data: Todo) => {
   }).then((response) => response.json());
 };
 
+//TODO: rework with GET & POST requests vvvvv
+
 export const removeItem = async (data: number) => {
   return await fetch(url + `/${data}`, {
     method: "DELETE",
+  }).then((response) => response.json());
+};
+
+export const doneItem = async (data: Todo) => {
+  return await fetch(url + `/${data.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", id: data.id.toString() },
+    body: JSON.stringify(data),
   }).then((response) => response.json());
 };
