@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import TodoList from "./Components/TodoList/TodoList";
 import Login from "./Components/Login/Login";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
