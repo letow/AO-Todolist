@@ -5,12 +5,17 @@ import TodoItem from "./TodoItem/TodoItem";
 import s from "./TodoList.module.scss";
 import Popup from "./Popup/Popup";
 import { useEffect } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
+//import CircularProgress from "@mui/material/CircularProgress";
+import Filter from "./Filter/Filter";
 
 export default observer(function TodoList() {
   useEffect(() => {
-    store.getTodos();
+    getTodoItems();
   }, []);
+
+  const getTodoItems = (queryParam = "") => {
+    store.getTodos(queryParam);
+  };
 
   const addingTask = (task: string) => {
     const text = task.trim();
@@ -27,6 +32,9 @@ export default observer(function TodoList() {
   return (
     <div className={s.TodoList}>
       <Popup addingTask={addingTask} />
+      <div className={s.filter}>
+        <Filter getTodoItems={getTodoItems} />
+      </div>
       <h4>Todos:</h4>
       <div className={s.items}>
         {store.todos.length ? (

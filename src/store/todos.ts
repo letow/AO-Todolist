@@ -26,8 +26,8 @@ class ToDoList {
     doneItem(this.todos[itemIndex]);
   }
 
-  async getTodos() {
-    this.todos = await getAllItems();
+  async getTodos(queryParam: string) {
+    this.todos = await getAllItems(queryParam);
   }
 }
 

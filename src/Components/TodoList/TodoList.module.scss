@@ -7,6 +7,9 @@ button {
   font-size: inherit;
   padding: 10px;
 }
+h4 {
+  margin-top: 0;
+}
 .items {
   display: flex;
   flex-direction: column;
@@ -19,4 +22,9 @@ button {
 .loader {
   display: flex;
   justify-content: center;
+}
+.filter {
+  display: flex;
+  justify-content: left;
+  text-align: left;
 }

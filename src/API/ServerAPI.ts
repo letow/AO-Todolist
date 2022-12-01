@@ -2,8 +2,10 @@ import { Todo } from "../Types/Todo";
 
 const url = "http://localhost:8000/todos";
 
-export const getAllItems = async () => {
-  return await fetch(url).then((response) => response.json());
+export const getAllItems = async (queryParam: string) => {
+  return await fetch(
+    url + (queryParam ? `?done=${queryParam.toString()}` : "")
+  ).then((response) => response.json());
 };
 
 export const addItem = async (data: Todo) => {

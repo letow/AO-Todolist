@@ -1,1 +1,1 @@
-.TodoList{display:flex;flex-direction:column}input,button{font-size:inherit;padding:10px}.items{display:flex;flex-direction:column;gap:.5rem}.placeholder{opacity:.6;font-size:.8em}.loader{display:flex;justify-content:center}
+.TodoList{display:flex;flex-direction:column}input,button{font-size:inherit;padding:10px}h4{margin-top:0}.items{display:flex;flex-direction:column;gap:.5rem}.placeholder{opacity:.6;font-size:.8em}.loader{display:flex;justify-content:center}.filter{display:flex;justify-content:left;text-align:left}
