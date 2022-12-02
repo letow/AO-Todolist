@@ -6,21 +6,25 @@ import Container from "@mui/material/Container";
 import { LoginInfo } from "../../Types/LoginInfo";
 import { observer } from "mobx-react-lite";
 import { Redirect } from "react-router-dom";
+import hash from "object-hash";
 
-let isLoginTried = false;
+let isLoginFailed = false;
 
 export default observer(function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
     store.signInAction({
       login: data.get("login"),
-      pass: data.get("password"),
+      hash: hash.sha1(data.get("password")!.toString()),
     } as LoginInfo);
-    isLoginTried = true;
+
+    isLoginFailed = true;
   };
 
-  if (store.user.length) {
+  if (store.user.hash) {
+    isLoginFailed = false;
     return <Redirect to="/todo" />;
   }
 
@@ -34,6 +38,9 @@ export default observer(function Login() {
         }}
       >
         <h2>Sign in</h2>
+        <span>
+          (user & password: <strong>root</strong> or <strong>admin</strong>)
+        </span>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -55,7 +62,7 @@ export default observer(function Login() {
             id="password"
             autoComplete="current-password"
           />
-          {!store.user.length && isLoginTried && (
+          {!store.user.hash && isLoginFailed && (
             <span style={{ color: "red", fontSize: "0.66em" }}>
               Invalid login or password. Please, try again.
             </span>

@@ -1,39 +1,56 @@
 {
+  "users": [
+    {
+      "login": "root",
+      "hash": "65b19b966f0c76bb600d73154e9c66dee883f924"
+    },
+    {
+      "login": "admin",
+      "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b"
+    }
+  ],
   "todos": [
     {
       "id": 2,
+      "hash": "65b19b966f0c76bb600d73154e9c66dee883f924",
       "text": "asdfghj",
       "done": true
     },
     {
       "id": 3,
+      "hash": "65b19b966f0c76bb600d73154e9c66dee883f924",
       "text": "joj",
       "done": true
     },
     {
       "id": 4,
+      "hash": "65b19b966f0c76bb600d73154e9c66dee883f924",
       "text": "ggggggg",
       "done": false
     },
     {
       "id": 5,
+      "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b",
       "text": "btuh[ksadlasdkzalksdjlkas",
-      "done": false
+      "done": true
     },
     {
       "id": 6,
+      "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b",
       "text": "dfghjkhgfdsa",
       "done": false
-    }
-  ],
-  "users": [
-    {
-      "login": "amogus",
-      "pass": "hellothere"
     },
     {
-      "login": "damn",
-      "pass": "dddd"
+      "id": 7,
+      "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b",
+      "text": "bruh",
+      "done": false
+    },
+    {
+      "id": 8,
+      "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b",
+      "text": "shish",
+      "done": false
     }
   ]
 }

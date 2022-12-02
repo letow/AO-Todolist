@@ -1,17 +1,16 @@
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import store from "../../store/todos";
+import { useHistory } from "react-router-dom";
 import { Todo } from "../../Types/Todo";
+import store from "../../store/todos";
 import TodoItem from "./TodoItem/TodoItem";
 import s from "./TodoList.module.scss";
 import Popup from "./Popup/Popup";
-import { useEffect } from "react";
-//import CircularProgress from "@mui/material/CircularProgress";
 import Filter from "./Filter/Filter";
+import Button from "@mui/material/Button/Button";
 
 export default observer(function TodoList() {
-  useEffect(() => {
-    getTodoItems();
-  }, []);
+  const history = useHistory();
 
   const getTodoItems = (queryParam = "") => {
     store.getTodos(queryParam);
@@ -23,14 +22,32 @@ export default observer(function TodoList() {
     if (text) {
       store.addTodo({
         id: store.todos.length ? store.todos[store.todos.length - 1].id + 1 : 1,
+        hash: store.user.hash,
         text: text,
         done: false,
       } as Todo);
     }
   };
 
+  const logOut = () => {
+    store.logOut();
+    history.push("/");
+  };
+
+  useEffect(() => {
+    getTodoItems();
+  }, []);
+
+  if (!store.user.hash) logOut();
+
   return (
     <div className={s.TodoList}>
+      <div className={s.greeting}>
+        <span className={s.username}>Hello, {store.user.login}!</span>
+        <Button variant="outlined" size="small" onClick={logOut}>
+          Log out
+        </Button>
+      </div>
       <Popup addingTask={addingTask} />
       <div className={s.filter}>
         <Filter getTodoItems={getTodoItems} />
@@ -43,9 +60,6 @@ export default observer(function TodoList() {
           ))
         ) : (
           <div className={s.placeholder}>Todo List is empty. Add a task!</div>
-          // <div className={s.loader}>
-          //   <CircularProgress />
-          // </div>
         )}
       </div>
     </div>
