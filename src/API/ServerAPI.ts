@@ -1,3 +1,4 @@
+import { LoginInfo } from "../Types/LoginInfo";
 import { Todo } from "../Types/Todo";
 
 const url = "http://localhost:8000/todos";
@@ -29,5 +30,14 @@ export const doneItem = async (data: Todo) => {
     method: "PATCH",
     headers: { "Content-Type": "application/json", id: data.id.toString() },
     body: JSON.stringify(data),
+  }).then((response) => response.json());
+};
+
+export const signIn = async (data: LoginInfo) => {
+  const url = `http://localhost:8000/users?login=${data.login}&pass=${data.pass}`;
+  return await fetch(url, {
+    // method: "POST",
+    // headers: { "Content-Type": "application/json" },
+    // body: JSON.stringify(data),
   }).then((response) => response.json());
 };

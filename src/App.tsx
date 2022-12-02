@@ -9,10 +9,10 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
-            <TodoList />
-          </Route>
-          <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/todo">
+            <TodoList />
           </Route>
           <Redirect to="/" />
         </Switch>
