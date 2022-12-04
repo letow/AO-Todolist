@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Todo } from "../../../Types/Todo";
 import s from "./TodoItem.module.scss";
-import store from "./../../../store/todos";
+import store from "../../../store/store";
 import Button from "@mui/material/Button/Button";
 import Checkbox from "@mui/material/Checkbox";
 

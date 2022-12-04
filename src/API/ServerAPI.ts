@@ -8,6 +8,11 @@ export const getAllItems = async (queryParam: string, hash: string) => {
   ).then((response) => response.json());
 };
 
+export const getItem = async (id: number) => {
+  const url = `http://localhost:8000/todos/${id}`;
+  return await fetch(url).then((response) => response.status);
+};
+
 export const addItem = async (data: Todo, hash: string) => {
   const url = `http://localhost:8000/todos`;
   return await fetch(url, {
@@ -16,8 +21,6 @@ export const addItem = async (data: Todo, hash: string) => {
     body: JSON.stringify(data),
   }).then((response) => response.json());
 };
-
-//TODO: rework with GET & POST requests vvvvv
 
 export const removeItem = async (data: number, hash: string) => {
   const url = `http://localhost:8000/todos/${data}?hash=${hash}`;

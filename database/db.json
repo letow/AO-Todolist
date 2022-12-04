@@ -13,7 +13,7 @@
     {
       "id": 2,
       "hash": "65b19b966f0c76bb600d73154e9c66dee883f924",
-      "text": "asdfghj",
+      "text": "hello there",
       "done": true
     },
     {
@@ -31,7 +31,7 @@
     {
       "id": 5,
       "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b",
-      "text": "btuh[ksadlasdkzalksdjlkas",
+      "text": "note #123456",
       "done": true
     },
     {
@@ -49,7 +49,7 @@
     {
       "id": 8,
       "hash": "20e0cbcd3cf233b748ebc24193b9afa7bfd8636b",
-      "text": "shish",
+      "text": "newman",
       "done": false
     }
   ]

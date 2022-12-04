@@ -3,6 +3,7 @@ import {
   addItem,
   doneItem,
   getAllItems,
+  getItem,
   removeItem,
   signIn,
 } from "../API/ServerAPI";
@@ -11,8 +12,8 @@ import { Todo } from "../Types/Todo";
 
 class ToDoList {
   todos: Todo[] = [];
-  fetching: boolean = false;
   user: LoginInfo = { login: "", hash: "" };
+  freeId: number = -1;
 
   constructor() {
     makeAutoObservable(this);
@@ -47,6 +48,16 @@ class ToDoList {
 
   async getTodos(queryParam: string) {
     this.todos = await getAllItems(queryParam, this.user.hash);
+  }
+
+  async getFreeId() {
+    const randId = Math.floor(Math.random() * 10000);
+    const resp = Number(await getItem(randId));
+    if (resp === 404) {
+      this.freeId = randId;
+    } else {
+      this.getFreeId();
+    }
   }
 }
 

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useHistory } from "react-router-dom";
 import { Todo } from "../../Types/Todo";
-import store from "../../store/todos";
+import store from "../../store/store";
 import TodoItem from "./TodoItem/TodoItem";
 import s from "./TodoList.module.scss";
 import Popup from "./Popup/Popup";
@@ -11,17 +11,18 @@ import Button from "@mui/material/Button/Button";
 
 export default observer(function TodoList() {
   const history = useHistory();
+  const freeId = store.freeId;
 
   const getTodoItems = (queryParam = "") => {
     store.getTodos(queryParam);
+    store.getFreeId();
   };
 
   const addingTask = (task: string) => {
     const text = task.trim();
-
     if (text) {
       store.addTodo({
-        id: store.todos.length ? store.todos[store.todos.length - 1].id + 1 : 1,
+        id: freeId,
         hash: store.user.hash,
         text: text,
         done: false,

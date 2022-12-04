@@ -1,12 +1,13 @@
-import store from "./../../store/todos";
+import { observer } from "mobx-react-lite";
+import { Redirect } from "react-router-dom";
+import { LoginInfo } from "../../Types/LoginInfo";
+import store from "../../store/store";
+import s from "./Login.module.scss";
+import hash from "object-hash";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import { LoginInfo } from "../../Types/LoginInfo";
-import { observer } from "mobx-react-lite";
-import { Redirect } from "react-router-dom";
-import hash from "object-hash";
 
 let isLoginFailed = false;
 
@@ -29,7 +30,7 @@ export default observer(function Login() {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={s.Login}>
       <Box
         sx={{
           display: "flex",
@@ -38,7 +39,7 @@ export default observer(function Login() {
         }}
       >
         <h2>Sign in</h2>
-        <span>
+        <span className={s.tip}>
           (user & password: <strong>root</strong> or <strong>admin</strong>)
         </span>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
